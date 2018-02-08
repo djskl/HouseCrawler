@@ -13,8 +13,7 @@ class LianjiaSpider(scrapy.Spider):
         yield getHouseInfo(response)
 
     def parse_house_list(self, response):
-        for item_url in response.xpath("//ul[@class='sellListContent']/li/a/@href"):
-            next_url = item_url.extract()
+        for next_url in response.xpath("//a[@class='img']/@href").extract():
             yield response.follow(next_url, self.parse_house_item)
 
     def parse_house_pages(self, response):
