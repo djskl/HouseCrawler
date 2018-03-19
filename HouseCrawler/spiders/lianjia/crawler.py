@@ -14,7 +14,8 @@ class LianjiaSpider(scrapy.Spider):
 
     def parse_house_list(self, response):
         for next_url in response.xpath("//a[@class='img']/@href").extract():
-            yield response.follow(next_url, self.parse_house_item)
+            if "https://bj.lianjia.com/ershoufang" in next_url:
+                yield response.follow(next_url, self.parse_house_item)
 
     def parse_house_pages(self, response):
         page_data = json.loads(response.xpath("//div[@class='page-box house-lst-page-box']/@page-data").extract_first())

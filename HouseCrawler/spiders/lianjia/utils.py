@@ -35,39 +35,44 @@ def getTotals(response):
 
 
 def getHouseInfo(response):
-    return {
-        "链家编号": response.xpath(
-            '//div[@class="aroundInfo"]/div[@class="houseRecord"]/span[@class="info"]/text()').extract_first().strip(),
-        "价格": response.xpath(
-            "//div[contains(concat(' ', normalize-space(@class), ' '), ' price ')]/span[contains(concat(' ', normalize-space(@class), ' '), ' total ')]/text()").extract_first().strip(),
-        "关注": response.xpath("//span[@id='favCount']/text()").extract_first().strip(),
-        "看过": response.xpath("//span[@id='cartCount']/text()").extract_first().strip(),
-        "区县": response.xpath(u"//span[text()='所在区域']/parent::div/span[2]/a[1]/text()").extract_first().strip(),
-        "商圈": response.xpath(u"//span[text()='所在区域']/parent::div/span[2]/a[2]/text()").extract_first().strip(),
-        "环线": response.xpath(u"//span[text()='所在区域']/parent::div/span[2]/text()[2]").extract_first().strip(),
-        "小区": response.xpath('//div[@class="aroundInfo"]/div[@class="communityName"]/a/text()').extract_first().strip(),
-        "房屋户型": response.xpath(u"//span[text()='房屋户型']/parent::li/text()").extract_first().strip(),
-        "所在楼层": response.xpath(u"//span[text()='所在楼层']/parent::li/text()").extract_first().strip(),
-        "建筑面积": response.xpath(u"//span[text()='建筑面积']/parent::li/text()").extract_first().strip(),
-        "户型结构": response.xpath(u"//span[text()='户型结构']/parent::li/text()").extract_first().strip(),
-        "套内面积": response.xpath(u"//span[text()='套内面积']/parent::li/text()").extract_first().strip(),
-        "建筑类型": response.xpath(u"//span[text()='建筑类型']/parent::li/text()").extract_first().strip(),
-        "房屋朝向": response.xpath(u"//span[text()='房屋朝向']/parent::li/text()").extract_first().strip(),
-        "建筑结构": response.xpath(u"//span[text()='建筑结构']/parent::li/text()").extract_first().strip(),
-        "装修情况": response.xpath(u"//span[text()='装修情况']/parent::li/text()").extract_first().strip(),
-        "梯户比例": response.xpath(u"//span[text()='梯户比例']/parent::li/text()").extract_first().strip(),
-        "供暖方式": response.xpath(u"//span[text()='供暖方式']/parent::li/text()").extract_first().strip(),
-        "配备电梯": response.xpath(u"//span[text()='配备电梯']/parent::li/text()").extract_first().strip(),
-        "产权年限": response.xpath(u"//span[text()='产权年限']/parent::li/text()").extract_first().strip(),
+    def getValue(path):
+        info = response.xpath(path).extract_first()
+        if info:
+            info = info.strip()
+        return info
 
-        "挂牌时间": response.xpath(u"//span[text()='挂牌时间']/parent::li/span[2]/text()").extract_first().strip(),
-        "上次交易": response.xpath(u"//span[text()='上次交易']/parent::li/span[2]/text()").extract_first().strip(),
-        "交易权属": response.xpath(u"//span[text()='交易权属']/parent::li/span[2]/text()").extract_first().strip(),
-        "房屋用途": response.xpath(u"//span[text()='房屋用途']/parent::li/span[2]/text()").extract_first().strip(),
-        "房屋年限": response.xpath(u"//span[text()='房屋年限']/parent::li/span[2]/text()").extract_first().strip(),
-        "产权所属": response.xpath(u"//span[text()='产权所属']/parent::li/span[2]/text()").extract_first().strip(),
-        "抵押信息": response.xpath(u"//span[text()='抵押信息']/parent::li/span[2]/text()").extract_first().strip(),
-        "房本备件": response.xpath(u"//span[text()='房本备件']/parent::li/span[2]/text()").extract_first().strip(),
+    return {
+        "链家编号": getValue('//div[@class="aroundInfo"]/div[@class="houseRecord"]/span[@class="info"]/text()'),
+        "价格": getValue(
+            "//div[contains(concat(' ', normalize-space(@class), ' '), ' price ')]/span[contains(concat(' ', normalize-space(@class), ' '), ' total ')]/text()"),
+        "关注": getValue("//span[@id='favCount']/text()"),
+        "看过": getValue("//span[@id='cartCount']/text()"),
+        "区县": getValue(u"//span[text()='所在区域']/parent::div/span[2]/a[1]/text()"),
+        "商圈": getValue(u"//span[text()='所在区域']/parent::div/span[2]/a[2]/text()"),
+        "环线": getValue(u"//span[text()='所在区域']/parent::div/span[2]/text()[2]"),
+        "小区": getValue('//div[@class="aroundInfo"]/div[@class="communityName"]/a/text()'),
+        "房屋户型": getValue(u"//span[text()='房屋户型']/parent::li/text()"),
+        "所在楼层": getValue(u"//span[text()='所在楼层']/parent::li/text()"),
+        "建筑面积": getValue(u"//span[text()='建筑面积']/parent::li/text()"),
+        "户型结构": getValue(u"//span[text()='户型结构']/parent::li/text()"),
+        "套内面积": getValue(u"//span[text()='套内面积']/parent::li/text()"),
+        "建筑类型": getValue(u"//span[text()='建筑类型']/parent::li/text()"),
+        "房屋朝向": getValue(u"//span[text()='房屋朝向']/parent::li/text()"),
+        "建筑结构": getValue(u"//span[text()='建筑结构']/parent::li/text()"),
+        "装修情况": getValue(u"//span[text()='装修情况']/parent::li/text()"),
+        "梯户比例": getValue(u"//span[text()='梯户比例']/parent::li/text()"),
+        "供暖方式": getValue(u"//span[text()='供暖方式']/parent::li/text()"),
+        "配备电梯": getValue(u"//span[text()='配备电梯']/parent::li/text()"),
+        "产权年限": getValue(u"//span[text()='产权年限']/parent::li/text()"),
+
+        "挂牌时间": getValue(u"//span[text()='挂牌时间']/parent::li/span[2]/text()"),
+        "上次交易": getValue(u"//span[text()='上次交易']/parent::li/span[2]/text()"),
+        "交易权属": getValue(u"//span[text()='交易权属']/parent::li/span[2]/text()"),
+        "房屋用途": getValue(u"//span[text()='房屋用途']/parent::li/span[2]/text()"),
+        "房屋年限": getValue(u"//span[text()='房屋年限']/parent::li/span[2]/text()"),
+        "产权所属": getValue(u"//span[text()='产权所属']/parent::li/span[2]/text()"),
+        "抵押信息": getValue(u"//span[text()='抵押信息']/parent::li/span[2]/text()"),
+        "房本备件": getValue(u"//span[text()='房本备件']/parent::li/span[2]/text()"),
 
         "链接": response.url
     }
