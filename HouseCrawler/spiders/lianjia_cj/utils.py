@@ -5,10 +5,10 @@ from scrapy.exporters import CsvItemExporter
 def getHouseInfo(response):
     house_info = {
         "链家编号": response.xpath(u"//span[text()='链家编号']/parent::li/text()").extract_first(),
-        "小区名称": response.xpath(u"//div[@class='house-title']/div/text()").extract_first().split(" ")[0],
+        "小区名称": response.xpath(u"//div[contains(@class, 'house-title')]/div/text()").extract_first().split(" ")[0],
+        "成交日期": response.xpath(u"//div[contains(@class, 'house-title')]/div/span/text()").extract_first().split(" ")[0],
         "成交价格": response.xpath(u"//span[@class='dealTotalPrice']/i/text()").extract_first(),
         "挂牌价格": response.xpath(u"//span[text()='挂牌价格（万）']/label/text()").extract_first(),
-        "成交日期": response.xpath(u"//div[@class='house-title']/div/span/text()").extract_first().split(" ")[0],
         "成交周期": response.xpath(u"//span[text()='成交周期（天）']/label/text()").extract_first(),
         "调价次数":response.xpath(u"//span[text()='调价（次）']/label/text()").extract_first(),
         "带看次数":response.xpath(u"//span[text()='带看（次）']/label/text()").extract_first(),
