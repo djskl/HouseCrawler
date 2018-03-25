@@ -7,22 +7,22 @@ HOUSE_ROOM_CONDS = ["l1", "l2", "l3", "l4", "l5"]
 
 BASE_URLS = [
     "https://bj.lianjia.com/ershoufang/dongcheng/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/xicheng/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/chaoyang/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/haidian/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/fengtai/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/shijingshan/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/tongzhou/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/changping/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/daxing/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/yizhuangkaifaqu/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/shunyi/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/fangshan/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/mentougou/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/pinggu/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/huairou/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/miyun/ng1hu1nb1/",
-    "https://bj.lianjia.com/ershoufang/yanqing/ng1hu1nb1/"
+    # "https://bj.lianjia.com/ershoufang/xicheng/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/chaoyang/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/haidian/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/fengtai/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/shijingshan/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/tongzhou/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/changping/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/daxing/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/yizhuangkaifaqu/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/shunyi/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/fangshan/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/mentougou/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/pinggu/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/huairou/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/miyun/ng1hu1nb1/",
+    # "https://bj.lianjia.com/ershoufang/yanqing/ng1hu1nb1/"
 ]
 
 
