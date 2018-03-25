@@ -14,7 +14,7 @@ class LianjiaSpider(scrapy.Spider):
 
     def parse_house_list(self, response):
         for next_url in response.xpath("//a[@class='img']/@href").extract():
-            if "https://bj.lianjia.com/ershoufang" in next_url:
+            if "bj.lianjia.com/ershoufang" in next_url:
                 yield response.follow(next_url, self.parse_house_item)
 
     def parse_house_pages(self, response):
