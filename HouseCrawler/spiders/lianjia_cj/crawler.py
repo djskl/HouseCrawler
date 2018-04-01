@@ -24,7 +24,9 @@ class LianjiaSpider(scrapy.Spider):
         ljid = response.xpath(u"//span[text()='链家编号']/parent::li/text()").extract_first()
         ljid = ljid.strip()
         if ljid:
-            yield getHouseInfo(response)
+            house = getHouseInfo(response)
+            if house:
+                yield house
 
     def parse_houses(self, response):
         all_urls = response.xpath("//ul[@class='listContent']/li/a/@href").extract()

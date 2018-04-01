@@ -3,10 +3,16 @@ from scrapy.conf import settings
 from scrapy.exporters import CsvItemExporter
 
 def getHouseInfo(response):
+
+    cj_date = response.xpath(u"//div[contains(@class, 'house-title')]/div/span/text()").extract_first().split(" ")[0]
+    if not (cj_date[:4] == "2017" or cj_date[:4] == "2018"):
+        return None
+
     house_info = {
         "链家编号": response.xpath(u"//span[text()='链家编号']/parent::li/text()").extract_first(),
+        "区县": response.xpath(u"//div[@class='deal-bread']/a/text()")[2].extract()[:2],
         "小区名称": response.xpath(u"//div[contains(@class, 'house-title')]/div/text()").extract_first().split(" ")[0],
-        "成交日期": response.xpath(u"//div[contains(@class, 'house-title')]/div/span/text()").extract_first().split(" ")[0],
+        "成交日期": cj_date,
         "成交价格": response.xpath(u"//span[@class='dealTotalPrice']/i/text()").extract_first(),
         "挂牌价格": response.xpath(u"//span[text()='挂牌价格（万）']/label/text()").extract_first(),
         "成交周期": response.xpath(u"//span[text()='成交周期（天）']/label/text()").extract_first(),
@@ -44,6 +50,7 @@ def getHouseInfo(response):
 
 FIELDS_TO_EXPORT = [
     "链家编号",
+    "区县",
     "小区名称",
     "成交价格",
     "挂牌价格",
